@@ -6,6 +6,8 @@ import * as bcrypt from "bcrypt";
 
 
 
+var salt = bcrypt.genSaltSync(10);
+
 const pgr = knex ({
     client: 'pg',
     connection: {
@@ -52,7 +54,7 @@ app.post("/signin", (req, res) => {
 app.post("/register", (req, res) => {
     const { email, name, password } =req.body;
     if (email || name || password){
-    const hash = bcrypt.hashSync(password,2);
+    const hash = bcrypt.hashSync(password,salt);
     pgr.transaction(trx => {
         trx.insert({
             hash: hash,

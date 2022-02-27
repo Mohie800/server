@@ -14,7 +14,6 @@
   "license": "ISC",
   "devDependencies": {
     "@types/bcrypt-nodejs": "^0.0.31",
-    "bcrypt-nodejs": "^0.0.3",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
