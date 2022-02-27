@@ -27,7 +27,7 @@ app.use(cors());
 
 
 app.get("/", (req, rep) => {
-    rep.send(database.users)
+    rep.send("goood")
 })
 
 app.post("/signin", (req, res) => {
