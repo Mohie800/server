@@ -2,7 +2,7 @@ import express, { response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import knex from "knex";
-var bcrypt = require('bcryptjs');
+import bcrypt from "bcryptjs"
 
 
 var salt = bcrypt.genSaltSync(10);
