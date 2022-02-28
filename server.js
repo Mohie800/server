@@ -19,7 +19,7 @@ const { knex, Knex } = pkg;
 
 var salt = bcrypt.genSaltSync(10);
 
-const pgr = knex (
+const pgr = pkg (
     {
     client: 'pg',
     connection: {
