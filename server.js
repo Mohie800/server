@@ -3,7 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import bcrypt from "bcryptjs";
 // import myknex from "./knex/knex.js";
-import Knex, { knex } from 'knex';
+import pkg from 'knex';
+const { knex } = pkg;
 
 // const knex = require('./knex/knex.js').default;
 // const { Client } = require('pg');
