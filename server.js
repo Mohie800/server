@@ -3,19 +3,19 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import knex from "knex";
 import bcrypt from "bcryptjs"
+const { Client } = require('pg');
+
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
 
 
 var salt = bcrypt.genSaltSync(10);
 
-const pgr = knex ({
-    client: 'pg',
-    connection: {
-      connectionsrting : process.env.DATABASE_URL,
-      ssl: {
-        rejectUnauthorized: false
-      }
-    }
-  });
+const pgr = knex (client);
 
 
 //   console.log (pgr.select("*").from("users"))
