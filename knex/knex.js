@@ -3,8 +3,8 @@
 // export default require('knex')(config);
 
 import knex from 'knex'
-import development from '../knexfile.js'
+import configuration from '../knexfile.js'
 
-const Knex = knex(development)
+const Knex = knex(configuration.development)
 
 export default knex
