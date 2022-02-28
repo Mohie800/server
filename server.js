@@ -4,7 +4,7 @@ import cors from "cors";
 import bcrypt from "bcryptjs";
 // import myknex from "./knex/knex.js";
 import pkg from 'knex';
-const { knex } = pkg;
+const knex, { knex } = pkg;
 
 // const knex = require('./knex/knex.js').default;
 // const { Client } = require('pg');
