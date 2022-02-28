@@ -2,7 +2,7 @@ import express, { response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import bcrypt from "bcryptjs";
-import knex from "./knex/knex.js";
+import myknex from "./knex/knex.js";
 
 // const knex = require('./knex/knex.js').default;
 // const { Client } = require('pg');
@@ -17,7 +17,7 @@ import knex from "./knex/knex.js";
 
 var salt = bcrypt.genSaltSync(10);
 
-const pgr = knex (
+const pgr = myknex (
 //     {
 //     client: 'pg',
 //     connection: {
