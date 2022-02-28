@@ -3,32 +3,32 @@ const bodyParser = require("body-parser");
 const cors = require("cors")
 const bcrypt = require("bcryptjs")
 // import myknex from "./knex/knex.js";
-const knex = require("knex")
+// const knex = require("knex")
 // import knex, { Knex } from 'knex';
 
-// const knex = require('./knex/knex.js').default;
-// const { Client } = require('pg');
+const knex = require('./knex/knex.js').default;
+const { Client } = require('pg');
 
-// const client = new Client({
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//       rejectUnauthorized: false
-//     }
-//   });
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
 
 
 var salt = bcrypt.genSaltSync(10);
 
 const pgr = knex(
-    {
-    client: 'pg',
-    connection: {
-      connectionsrting : process.env.DATABASE_URL,
-      ssl: {
-        rejectUnauthorized: false
-      }
-    }
-  } 
+//     {
+//     client: 'pg',
+//     connection: {
+//       connectionsrting : process.env.DATABASE_URL,
+//       ssl: {
+//         rejectUnauthorized: false
+//       }
+//     }
+//   } 
   );
 
 
