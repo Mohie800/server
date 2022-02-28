@@ -1,9 +1,9 @@
-import express, { response } from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import bcrypt from "bcryptjs";
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors")
+const bcrypt = require("bcryptjs")
 // import myknex from "./knex/knex.js";
-import knex from "knex";
+const knex = require("knex")
 // import knex, { Knex } from 'knex';
 
 // const knex = require('./knex/knex.js').default;
