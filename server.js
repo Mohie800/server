@@ -11,7 +11,9 @@ const pgr = knex ({
     client: 'pg',
     connection: {
       connectionsrting : process.env.DATABASE_URL,
-      ssl : true
+      ssl: {
+        rejectUnauthorized: false
+      }
     }
   });
 
