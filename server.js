@@ -2,7 +2,7 @@ import express, { response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import bcrypt from "bcryptjs";
-import knex from "./knexfile";
+import knex from "./knex/knex.js";
 
 // const knex = require('./knex/knex.js');
 // const { Client } = require('pg');
