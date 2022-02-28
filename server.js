@@ -59,7 +59,9 @@ app.post("/signin", (req, res) => {
 
 app.post("/register", (req, res) => {
     const { email, name, password } =req.body;
-    if (email || name || password){
+    if (!email || !name || !password){
+        return res.status(400).json("invalid")
+} else {
     const hash = bcrypt.hashSync(password,salt);
     pgr.transaction(trx => {
         trx.insert({
@@ -82,8 +84,7 @@ app.post("/register", (req, res) => {
     })
     
     .catch(err => res.status(400).json("unable to register"))
-} else {
-    return res.status(400).json("unable to register")
+    
 }
 })
 
