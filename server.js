@@ -6,15 +6,15 @@ const bcrypt = require("bcryptjs")
 // const knex = require("knex")
 // import knex, { Knex } from 'knex';
 
-const knex = require('./knex/knex.js').default;
+const knex = require('./knex/knex.js');
 const { Client } = require('pg');
 
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  });
+// const client = new Client({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: {
+//       rejectUnauthorized: false
+//     }
+//   });
 
 
 var salt = bcrypt.genSaltSync(10);
