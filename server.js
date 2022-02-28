@@ -2,8 +2,8 @@ import express, { response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import knex from "knex";
-import bcrypt from "bcryptjs"
-const { Client } = require('pg');
+import bcrypt from "bcryptjs";
+import { Client } from "pg";
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
