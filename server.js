@@ -1,12 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors")
+const cors = require("cors");
 const bcrypt = require("bcryptjs")
 // import myknex from "./knex/knex.js";
-// const knex = require("knex")
+const knex = require("knex");
 // import knex, { Knex } from 'knex';
 
-const knex = require('./knex/knex.js');
+// const knex = require('./knex/knex.js');
 // const { Client } = require('pg');
 
 // const client = new Client({
@@ -19,16 +19,16 @@ const knex = require('./knex/knex.js');
 
 var salt = bcrypt.genSaltSync(10);
 
-const pgr = knex.queryBuilder(
-//     {
-//     client: 'pg',
-//     connection: {
-//       connectionsrting : process.env.DATABASE_URL,
-//       ssl: {
-//         rejectUnauthorized: false
-//       }
-//     }
-//   } 
+const pgr = knex(
+    {
+    client: 'pg',
+    connection: {
+      connectionsrting : process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
+  } 
   );
 
 
