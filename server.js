@@ -19,7 +19,7 @@ const knex = require('./knex/knex.js');
 
 var salt = bcrypt.genSaltSync(10);
 
-const pgr = knex(
+const pgr = knex.queryBuilder(
 //     {
 //     client: 'pg',
 //     connection: {
