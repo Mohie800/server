@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs")
 // import knex, { Knex } from 'knex';
 
 const knex = require('./knex/knex.js');
-const { Client } = require('pg');
+// const { Client } = require('pg');
 
 // const client = new Client({
 //     connectionString: process.env.DATABASE_URL,
