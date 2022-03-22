@@ -2,30 +2,31 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
+const knex = require('knex');
 
-const knex = require('./knex/knex.js');
-const { Client } = require('pg');
+// const knex = require('./knex/knex.js');
+// const { Client } = require('pg');
 
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  });
-
-
-var salt = bcrypt.genSaltSync(10);
-
-const pgr = knex(client
-//     {
-//     client: 'pg',
-//     connection: {
-//       connectionsrting : process.env.DATABASE_URL,
-//       ssl: {
-//         rejectUnauthorized: false
-//       }
+// const client = new Client({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: {
+//       rejectUnauthorized: false
 //     }
-//   } 
+//   });
+
+
+var salt = bcrypt.genSaltSync();
+
+const pgr = knex(
+    {
+    client: 'pg',
+    connection: {
+      connectionsrting : process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
+  } 
   );
 
 
@@ -118,17 +119,6 @@ app.put("/image", (req, res) => {
 
 
 
-// // Load hash from your password DB.
-// bcrypt.compare("bacon", hash, function(err, res) {
-//     // res == true
-// });
-// bcrypt.compare("veggies", hash, function(err, res) {
-//     // res = false
-// });
-
-// app.listen(process.env.PORT || 5000, () => {
-//     console.log("running");
-// })
 
 const server_port = process.env.YOUR_PORT || process.env.PORT || 80;
 const server_host = process.env.YOUR_HOST || '0.0.0.0';
