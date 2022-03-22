@@ -1,13 +1,13 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const bcrypt = require("bcryptjs")
+import express from "express";
+import { json } from "body-parser";
+import cors from "cors";
+import { genSaltSync, compareSync, hashSync } from "bcryptjs";
 // import myknex from "./knex/knex.js";
 // const knex = require("knex");
 // import knex, { Knex } from 'knex';
 
-const knex = require('./knex/knex.js');
-const { Client } = require('pg');
+import knex from './knex/knex.js';
+import { Client } from 'pg';
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -17,7 +17,7 @@ const client = new Client({
   });
 
 
-var salt = bcrypt.genSaltSync(10);
+var salt = genSaltSync(10);
 
 const pgr = knex(client
 //     {
@@ -35,7 +35,7 @@ const pgr = knex(client
 //   console.log (pgr.select("*").from("users"))
 
 const app = express();
-app.use(bodyParser.json());
+app.use(json());
 app.use(cors());
 
 
@@ -48,7 +48,7 @@ app.post("/signin", (req, res) => {
    pgr.select("email", "hash").from("login")
    .where("email", "=", req.body.email)
    .then(data =>{
-       const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
+       const isValid = compareSync(req.body.password, data[0].hash);
        if (isValid){
            return pgr.select("*").from("users")
            .where("email", "=", req.body.email)
@@ -68,7 +68,7 @@ app.post("/register", (req, res) => {
     if (!email || !name || !password){
         return res.status(400).json("invalid")
 } else {
-    const hash = bcrypt.hashSync(password,salt);
+    const hash = hashSync(password,salt);
     pgr.transaction(trx => {
         trx.insert({
             hash: hash,
