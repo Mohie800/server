@@ -1,10 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const bcrypt = require("bcryptjs")
-// import myknex from "./knex/knex.js";
-// const knex = require("knex");
-// import knex, { Knex } from 'knex';
+const bcrypt = require("bcryptjs");
 
 const knex = require('./knex/knex.js');
 const { Client } = require('pg');
@@ -137,4 +134,5 @@ const server_port = process.env.YOUR_PORT || process.env.PORT || 80;
 const server_host = process.env.YOUR_HOST || '0.0.0.0';
 app.listen(server_port, server_host, function() {
     console.log('Listening on port %d', server_port);
+    console.log("url", process.env.DATABASE_URL)
 });
