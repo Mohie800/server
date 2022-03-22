@@ -77,7 +77,7 @@ app.post("/register", (req, res) => {
         .then(loginemail => trx("users")
             .returning("*")
             .insert({
-                email: loginemail[0].email,
+                email: loginemail.email,
                 name: name,
                 joined: new Date()
             }).then(user => {
