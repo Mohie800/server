@@ -22,12 +22,9 @@ const pgr = knex(
     client: 'pg',
     connection: {
       connectionsrting : process.env.DATABASE_URL,
-      ssl: {
-        rejectUnauthorized: false
-      }
+      ssl: true
     }
-  } 
-  );
+  });
 
 
 //   console.log (pgr.select("*").from("users"))
@@ -77,7 +74,7 @@ app.post("/register", (req, res) => {
         .then(loginemail => trx("users")
             .returning("*")
             .insert({
-                email: loginemail.email,
+                email: loginemail[0].email,
                 name: name,
                 joined: new Date()
             }).then(user => {
