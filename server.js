@@ -5,15 +5,7 @@ const bcrypt = require("bcryptjs");
 const knex = require('knex');
 const { password, database } = require("pg/lib/defaults");
 
-// const knex = require('./knex/knex.js');
-// const { Client } = require('pg');
 
-// const client = new Client({
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//       rejectUnauthorized: false
-//     }
-//   });
 
 
 var salt = bcrypt.genSaltSync();
@@ -22,8 +14,6 @@ const pgr = knex(
     {
     client: 'pg',
     connection: {
-    //   connectionsrting : process.env.DATABASE_URL,
-    //   ssl: true
         host: 'ec2-3-219-204-29.compute-1.amazonaws.com',
         user: 'hyrlntfvhnbeuk',
         password: '8848d759c0fe854cf3834316734631015bdb8dacdd888cdeb9cc527deedb11a6',
@@ -32,7 +22,6 @@ const pgr = knex(
   });
 
 
-//   console.log (pgr.select("*").from("users"))
 
 const app = express();
 app.use(bodyParser.json());
